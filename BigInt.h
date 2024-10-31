@@ -2,33 +2,27 @@
 #define BIGINT_H
 
 #include <iostream>
+#include <vector>
 #include <string>
+#include <algorithm>
 
 class BigInt {
 private:
-    std::string value;
-    bool isNegative;
+    std::vector<int> digits;
 
-    BigInt add(const BigInt& other) const;
-    BigInt subtract(const BigInt& other) const;
-    BigInt multiply(const BigInt& other) const;
-    BigInt divide(const BigInt& other) const;
-    BigInt modulus(const BigInt& other) const;
+    void removeLeadingZeros();
 
 public:
-    // Constructors
     BigInt();
-    BigInt(const std::string& val);
-    BigInt(int val);
+    BigInt(const std::string& num);
 
-    // Operator overloads
     BigInt operator+(const BigInt& other) const;
     BigInt operator-(const BigInt& other) const;
     BigInt operator*(const BigInt& other) const;
     BigInt operator/(const BigInt& other) const;
-    BigInt operator%(const BigInt& other) const;
-
-    friend std::ostream& operator<<(std::ostream& os, const BigInt& bigInt);
+    static BigInt factorial(int n);
+    static BigInt catalan(int n);
+    void display() const;
 };
 
 #endif // BIGINT_H
